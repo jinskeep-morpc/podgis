@@ -110,7 +110,7 @@ networks:
 4. Run the pod. In a terminal run `podman-compose up -d`
 
 
-## Link containers and set up database
+## Link containers and set up server
 
 1. Log into pgadmin
 
@@ -135,8 +135,12 @@ networks:
 ## Create a database and activate postgis extension
 
 1. Right click on the server name in the left drop-down panel. 
-2. Click "Register > Database"
-3. Name the datebase.
-4. In the left drop-down panel, right click on the database you just create, click "Query Tool".
-5. In the query window, type `CREATE EXTENSION postgis;`
-6. Run the query by clicking the play button in the tool bar. 
+2. Click "Create > Database"
+3. Name the datebase in the General tab.
+4. Under the Definition tab, select:
+    - Template as "template_postgis"
+    - Tablespace as "pg_default"
+    - Collation as "en_US.utf8"
+    - Character Type as "en_US.utf8
+
+## Connect to database and add tables using python.
