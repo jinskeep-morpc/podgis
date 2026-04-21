@@ -69,7 +69,7 @@ services:
   postgres:
     image: docker.io/postgis/postgis
     environment:
-      - POSTGRES_USER=${POSTGRES_USERNAME}
+      - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - ./postgres:/var/lib/postgresql/data
@@ -101,7 +101,7 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 10.89.0.1/16
+        - subnet: 10.89.0.0/16
           ip_range: 10.89.0.0/24
           gateway: 10.89.0.1
 
@@ -144,3 +144,5 @@ networks:
     - Character Type as "en_US.utf8
 
 ## Connect to database and add tables using python.
+
+See podgis-connection-example.ipnyb
