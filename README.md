@@ -146,3 +146,21 @@ networks:
 ## Connect to database and add tables using python.
 
 See podgis-connection-example.ipnyb
+
+## Dumping database from container
+
+> SOURCE: https://stackoverflow.com/questions/30171063/how-to-generate-a-postgresql-dump-from-a-docker-container
+
+1. UPDATED compose.yaml to have user readable and writable volume.  
+- Add `./pg_dumps:/home/pg_dumps:Z` to volumes in postgres service. 
+- Reload containers with `podman-compose down` then `podman-compose up -d`
+
+### In VS Code..
+
+2. Navigate to containers and right click on postgres service under podgis pod.  
+> NOTE: Make sure you are looking at podman NOT docker runtimes, Click wrench and screwdriver in toolbar at top of "Containers" panel
+3. Attach a shell to postgres service.  
+4. In terminal of container, navigate to directory assigned in compose. (i.e. `/home/pg_dumps`)
+5. Dump the database by running `pg_dump -U postres -d database_name > filename.sql
+6. The file should now be visible on the host machine in the repo directory. (i.e. `podgis/pg_dumps`)
+
