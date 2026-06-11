@@ -1,3 +1,5 @@
 .env
 *.db
 *.sql
+pgadmin/
+postgres/
